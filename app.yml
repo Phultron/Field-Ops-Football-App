@@ -1,0 +1,12 @@
+install:
+  commands:
+    - ["npm", "ci", "--include=dev"]
+    - ["npm", "run", "build"]
+
+run:
+  command: ["node", ".next/standalone/server.js"]
+
+profile:
+  title: Gridiron Fantasy Football
+  description: "Season-long fantasy football competition tracker for field service teams — weekly matchups, standings, schedule, and awards powered by real performance metrics."
+  iconUrl: /icon.svg

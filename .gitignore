@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment variables (never commit secrets)
+.env
+.env*.local
+
+# Snowflake CLI / SDK logs
+snowflake.log
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing
+coverage/
+
+# Snowflake CLI local bundle output
+output/

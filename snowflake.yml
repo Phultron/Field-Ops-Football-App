@@ -1,0 +1,23 @@
+definition_version: "2"
+
+entities:
+  gridiron-fantasy:
+    type: snowflake-app
+    identifier:
+      name: GRIDIRON_FANTASY_APP
+      database: USER$<your_username>  # replace with your personal DB, or a shared DB to enable sharing
+      schema: PUBLIC
+    artifacts:
+      - "app/**/*"
+      - "components/**/*"
+      - "lib/**/*"
+      - "public/**/*"
+      - "package.json"
+      - "package-lock.json"
+      - "next.config.mjs"
+      - "tsconfig.json"
+      - "postcss.config.mjs"
+      - "components.json"
+      - "next-env.d.ts"
+      - "app.yml"
+    query_warehouse: MY_WAREHOUSE  # replace with your warehouse name
