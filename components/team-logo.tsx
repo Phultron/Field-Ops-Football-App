@@ -1,5 +1,6 @@
 "use client"
-import { TEAM_LOGOS, ICON_PATHS } from "@/lib/teams"
+import { ICON_PATHS } from "@/lib/teams"
+import { useLogoMap } from "@/lib/logo-context"
 
 interface Props {
   employeeId: string
@@ -8,7 +9,8 @@ interface Props {
 }
 
 export function TeamLogo({ employeeId, size = 40, className }: Props) {
-  const cfg = TEAM_LOGOS[employeeId] ?? { primary: "#374151", accent: "#9CA3AF", icon: "bolt" as const }
+  const logoMap = useLogoMap()
+  const cfg = logoMap[employeeId] ?? { primary: "#374151", accent: "#9CA3AF", icon: "bolt" as const }
   const iconD = ICON_PATHS[cfg.icon] ?? ICON_PATHS.bolt
 
   return (

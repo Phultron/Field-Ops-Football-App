@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { TeamLogo } from "./team-logo"
 import { ScoringExplainer } from "./scoring-explainer"
 import type { Team } from "@/lib/teams"
-import { TEAM_LOGOS } from "@/lib/teams"
+import { useLogoMap } from "@/lib/logo-context"
 import type { DriveResult } from "@/lib/demo"
 
 interface ScoreSummary {
@@ -63,6 +63,7 @@ function FootballField({ teamA, teamB, glowColor, ballPositions, animationKey }:
   const [fdFlash, setFdFlash]         = useState(false)               // "FIRST DOWN!" visible
   const [tdFlash, setTdFlash]         = useState<"A" | "B" | null>(null) // "TOUCHDOWN!" visible
   const [fgFlashTeam, setFgFlashTeam] = useState<"A" | "B" | null>(null) // "FIELD GOAL!" visible
+  const logoMap = useLogoMap()
   const intervalRef  = useRef<ReturnType<typeof setInterval> | null>(null)
   const fdTimerRef   = useRef<ReturnType<typeof setTimeout>  | null>(null)
   const tdTimerRef   = useRef<ReturnType<typeof setTimeout>  | null>(null)
@@ -274,8 +275,8 @@ function FootballField({ teamA, teamB, glowColor, ballPositions, animationKey }:
       {/* ── Field Goal flash ── */}
       {fgFlashTeam && (() => {
         const scoringTeam = fgFlashTeam === "A" ? teamA : teamB
-        const fgColor     = TEAM_LOGOS[scoringTeam.employee_id]?.primary ?? "#22c55e"
-        const fgAccent    = TEAM_LOGOS[scoringTeam.employee_id]?.accent  ?? "#ffffff"
+        const fgColor     = logoMap[scoringTeam.employee_id]?.primary ?? "#22c55e"
+        const fgAccent    = logoMap[scoringTeam.employee_id]?.accent  ?? "#ffffff"
         const teamShort   = (scoringTeam.mascot.split(" ").at(-1) ?? scoringTeam.mascot).toUpperCase()
         const fgX         = fgFlashTeam === "A" ? FR + (W - FR) / 2 : EZ / 2
         return (
@@ -308,8 +309,8 @@ function FootballField({ teamA, teamB, glowColor, ballPositions, animationKey }:
       {/* ── Touchdown flash ── */}
       {tdFlash && (() => {
         const scoringTeam   = tdFlash === "A" ? teamA : teamB
-        const tdColor       = TEAM_LOGOS[scoringTeam.employee_id]?.primary ?? "#22c55e"
-        const tdAccent      = TEAM_LOGOS[scoringTeam.employee_id]?.accent  ?? "#ffffff"
+        const tdColor       = logoMap[scoringTeam.employee_id]?.primary ?? "#22c55e"
+        const tdAccent      = logoMap[scoringTeam.employee_id]?.accent  ?? "#ffffff"
         const teamShort     = (scoringTeam.mascot.split(" ").at(-1) ?? scoringTeam.mascot).toUpperCase()
         // Flash at the end zone the scoring team drove into
         const tdX = tdFlash === "A" ? FR + (W - FR) / 2 : EZ / 2

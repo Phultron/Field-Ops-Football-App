@@ -22,7 +22,7 @@ export function AuditPanel({ week, onTeamClick }: {
 }) {
   const { data, isLoading } = useQuery<Record<string, AuditRow[]>>({
     queryKey: ["audit", week],
-    queryFn: () => fetch(`/api/audit?conference=AFC&week=${week}`).then(r => r.json()),
+    queryFn: () => fetch(`/api/audit?conference=Conf&week=${week}`).then(r => r.json()),
   })
 
   if (isLoading || !data) return (

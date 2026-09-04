@@ -22,7 +22,7 @@ interface ScheduleWeek {
 export function SchedulePanel({ currentWeek }: { currentWeek: number }) {
   const { data, isLoading } = useQuery<Record<string, ScheduleWeek[]>>({
     queryKey: ["schedule", currentWeek],
-    queryFn: () => fetch(`/api/schedule?conference=AFC&throughWeek=${currentWeek}`).then(r => r.json()),
+    queryFn: () => fetch(`/api/schedule?conference=Conf&throughWeek=${currentWeek}`).then(r => r.json()),
   })
 
   if (isLoading || !data) return (

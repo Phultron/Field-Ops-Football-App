@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import { useQuery } from "@tanstack/react-query"
 import { GamesView } from "@/components/games-view"
 import { StandingsPanel } from "@/components/standings-panel"
 import { SchedulePanel } from "@/components/schedule-panel"
@@ -9,6 +10,8 @@ import { PlayoffBracket } from "@/components/playoff-bracket"
 import { TeamDetail } from "@/components/team-detail"
 import { SEASON_WEEKS } from "@/lib/demo"
 import { COMPETITION_START } from "@/lib/config"
+import { LogoMapProvider } from "@/lib/logo-context"
+import type { TeamLogo } from "@/lib/teams"
 
 // Auto-detect the current round: floor(days since start / 7) + 1, clamped to completed rounds
 function getCurrentRound(): number {
@@ -36,6 +39,12 @@ export default function Home() {
   const [week, setWeek] = useState(getCurrentRound)
   const [selectedTeamId, setSelectedTeamId] = useState<string | null>(null)
 
+  const { data: rosterData } = useQuery<{ logoMap: Record<string, TeamLogo> }>({
+    queryKey: ["roster"],
+    queryFn: () => fetch("/api/roster").then(r => r.json()),
+    staleTime: 60_000,
+  })
+
   const weekLabel = SEASON_WEEKS[week - 1]?.label ?? `Week ${week}`
   const weekStart = SEASON_WEEKS[week - 1]?.start
   const weekEnd   = SEASON_WEEKS[week - 1]?.end
@@ -44,7 +53,7 @@ export default function Home() {
     : ""
 
   return (
-    <>
+    <LogoMapProvider logoMap={rosterData?.logoMap ?? null}>
       {/* Team detail slide-out */}
       <TeamDetail
         teamId={selectedTeamId}
@@ -136,6 +145,6 @@ export default function Home() {
           )}
         </div>
       </main>
-    </>
+    </LogoMapProvider>
   )
 }

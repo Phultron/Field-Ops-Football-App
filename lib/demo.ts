@@ -72,7 +72,7 @@ export function simulateWeeklyDrive(
   eidB: string,
   weekNum: number,
   daysPlayed: number,
-  scoreMap?: Map<string, import("./live-scoring").DemoScore[]>
+  scoreMap?: Map<string, DemoScore[]>
 ): DriveResult {
   let ballPos = 50.0
   let tdA = 0

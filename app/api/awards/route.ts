@@ -1,6 +1,6 @@
 // GET /api/awards?week=1
 import { NextRequest } from "next/server"
-import { TEAMS } from "@/lib/teams"
+import { getRoster } from "@/lib/roster"
 import { fetchWeekScores } from "@/lib/live-scoring"
 
 export const dynamic = "force-dynamic"
@@ -9,6 +9,7 @@ export async function GET(req: NextRequest) {
   const week = parseInt(req.nextUrl.searchParams.get("week") ?? "1", 10)
 
   const scoreMap = await fetchWeekScores(week)
+  const TEAMS = await getRoster()
 
   let heisman        = { mascot: "", manager: "", yards: 0, team_id: "" }
   let referralsLeader = { mascot: "", manager: "", yards: 0, team_id: "" }

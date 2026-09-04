@@ -1,6 +1,8 @@
-// GET /api/games?week=1&division=AFC+East
+// GET /api/games?week=1&division=Conf+A
 import { NextRequest } from "next/server"
-import { getTeamsByDivision, TEAM_LOGOS, DIVISION_COLORS, getWeekMatchups } from "@/lib/teams"
+import { DIVISION_COLORS, getWeekMatchups } from "@/lib/teams"
+import { getRoster } from "@/lib/roster"
+import { resolveLogos } from "@/lib/logo-resolver"
 import { demoScore, simulateWeeklyDrive, DEMO_DAYS } from "@/lib/demo"
 import { fetchWeekScores } from "@/lib/live-scoring"
 
@@ -8,11 +10,15 @@ export const dynamic = "force-dynamic"
 
 export async function GET(req: NextRequest) {
   const week = parseInt(req.nextUrl.searchParams.get("week") ?? "1", 10)
-  const division = req.nextUrl.searchParams.get("division") ?? "AFC East"
+  const division = req.nextUrl.searchParams.get("division") ?? "Conf A"
   const [conference, div] = division.split(" ")
 
-  const teams = getTeamsByDivision(conference, div)
+  const roster = await getRoster()
+  const divKey = `${conference} ${div}`
+  const teams = roster.filter(t => t.division === divKey).sort((a, b) => a.seed - b.seed)
   if (teams.length < 2) return Response.json([])
+
+  const logoMap = resolveLogos(roster)
 
   const matchups = getWeekMatchups(teams, week)
 
@@ -66,8 +72,8 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    const logoA = TEAM_LOGOS[a.employee_id]
-    const logoB = TEAM_LOGOS[b.employee_id]
+    const logoA = logoMap[a.employee_id]
+    const logoB = logoMap[b.employee_id]
     const divColors = DIVISION_COLORS[a.division] ?? { primary: "#374151", light: "#9CA3AF" }
 
     const mascotLastA = a.mascot.split(" ").at(-1)!

@@ -1,7 +1,8 @@
-// GET /api/audit?conference=AFC&week=2
+// GET /api/audit?conference=Conf&week=2
 // Raw per-team metric breakdown — only the fields that build the composite score.
 import { NextRequest } from "next/server"
-import { TEAMS, DIVISIONS } from "@/lib/teams"
+import { DIVISIONS } from "@/lib/teams"
+import { getRoster } from "@/lib/roster"
 import { fetchWeekScores } from "@/lib/live-scoring"
 
 export const dynamic = "force-dynamic"
@@ -21,9 +22,10 @@ interface AuditRow {
 }
 
 export async function GET(req: NextRequest) {
-  const conference = req.nextUrl.searchParams.get("conference") ?? "AFC"
+  const conference = req.nextUrl.searchParams.get("conference") ?? "Conf"
   const week = Math.max(1, parseInt(req.nextUrl.searchParams.get("week") ?? "1", 10))
 
+  const TEAMS = await getRoster()
   const scoreMap = await fetchWeekScores(week)
 
   const avgField = (scores: ReturnType<typeof scoreMap.get>, field: "referrals" | "upsell_pct" | "vpp" | "composite_score") => {

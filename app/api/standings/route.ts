@@ -1,6 +1,7 @@
-// GET /api/standings?conference=AFC&throughWeek=3
+// GET /api/standings?conference=Conf&throughWeek=3
 import { NextRequest } from "next/server"
-import { TEAMS, DIVISIONS, getWeekMatchups } from "@/lib/teams"
+import { DIVISIONS, getWeekMatchups } from "@/lib/teams"
+import { getRoster } from "@/lib/roster"
 import { simulateWeeklyDrive, DEMO_DAYS, SEASON_WEEKS } from "@/lib/demo"
 import { fetchWeekScores } from "@/lib/live-scoring"
 
@@ -20,7 +21,7 @@ interface TeamStanding {
 }
 
 export async function GET(req: NextRequest) {
-  const conference = req.nextUrl.searchParams.get("conference") ?? "AFC"
+  const conference = req.nextUrl.searchParams.get("conference") ?? "Conf"
   const throughWeek = Math.min(
     SEASON_WEEKS.length,
     Math.max(1, parseInt(
@@ -31,6 +32,7 @@ export async function GET(req: NextRequest) {
     ))
   )
 
+  const TEAMS = await getRoster()
   const standings: Record<string, TeamStanding> = {}
 
   for (const team of TEAMS.filter(t => t.conference === conference)) {

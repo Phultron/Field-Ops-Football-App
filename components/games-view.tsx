@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 import { MatchupCard } from "./matchup-card"
 import { MvpToast } from "./mvp-toast"
 
-const DIVISIONS = ["East", "North", "South", "West"]
+const DIVISIONS = ["A", "B", "C", "D"]
 
 interface GamesViewProps {
   week: number
@@ -13,8 +13,8 @@ interface GamesViewProps {
 }
 
 export function GamesView({ week, weekLabel, onTeamClick }: GamesViewProps) {
-  const [activeDivision, setActiveDivision] = useState("East")
-  const division = `AFC ${activeDivision}`
+  const [activeDivision, setActiveDivision] = useState("A")
+  const division = `Conf ${activeDivision}`
 
   const { data: games, isLoading } = useQuery<object[]>({
     queryKey: ["games", week, division],
@@ -39,7 +39,7 @@ export function GamesView({ week, weekLabel, onTeamClick }: GamesViewProps) {
                 : "border-transparent text-gray-500 hover:text-gray-300"
             }`}
           >
-            AFC {div}
+            Conf {div}
           </button>
         ))}
       </div>

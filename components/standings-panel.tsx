@@ -11,7 +11,7 @@ interface Standing {
   wins: number
   losses: number
   ties: number
-  total_yards: number
+  composite_score: number
   division: string
 }
 
@@ -32,7 +32,7 @@ export function StandingsPanel({ week, onTeamClick }: {
 }) {
   const { data, isLoading } = useQuery<Record<string, Standing[]>>({
     queryKey: ["standings", week],
-    queryFn: () => fetch(`/api/standings?conference=AFC&throughWeek=${week}`).then(r => r.json()),
+    queryFn: () => fetch(`/api/standings?conference=Conf&throughWeek=${week}`).then(r => r.json()),
   })
 
   if (isLoading || !data) return (

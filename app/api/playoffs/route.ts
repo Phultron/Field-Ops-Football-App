@@ -1,5 +1,6 @@
-// GET /api/playoffs — single AFC bracket: semis (week 8) → championship (week 9)
-import { TEAMS, DIVISIONS, getWeekMatchups } from "@/lib/teams"
+// GET /api/playoffs — single-conference bracket: semis (week 8) → championship (week 9)
+import { DIVISIONS, getWeekMatchups, type Team } from "@/lib/teams"
+import { getRoster } from "@/lib/roster"
 import { demoScore, simulateWeeklyDrive, DEMO_DAYS } from "@/lib/demo"
 
 export const dynamic = "force-dynamic"
@@ -25,9 +26,9 @@ interface PlayoffMatchup {
   week: number
 }
 
-function getDivisionWinner(divSuffix: string): PlayoffTeam | null {
-  const divKey = `AFC ${divSuffix}`
-  const divTeams = TEAMS.filter(t => t.division === divKey)
+function getDivisionWinner(teams: Team[], divSuffix: string): PlayoffTeam | null {
+  const divKey = `Conf ${divSuffix}`
+  const divTeams = teams.filter(t => t.division === divKey)
   const record: Record<string, { wins: number; yards: number }> = {}
   for (const t of divTeams) record[t.employee_id] = { wins: 0, yards: 0 }
 
@@ -73,9 +74,10 @@ function makeMatchup(teamA: PlayoffTeam, teamB: PlayoffTeam, week: number): Play
 }
 
 export async function GET() {
+  const roster = await getRoster()
   // 4 division winners seeded by regular-season wins
   const winners = DIVISIONS
-    .map(d => getDivisionWinner(d))
+    .map(d => getDivisionWinner(roster, d))
     .filter(Boolean)
     .sort((a, b) => (b!.reg_wins - a!.reg_wins) || (b!.reg_yards - a!.reg_yards)) as PlayoffTeam[]
 

@@ -1,20 +1,22 @@
-// GET /api/schedule?conference=AFC&throughWeek=3
+// GET /api/schedule?conference=Conf&throughWeek=3
 import { NextRequest } from "next/server"
-import { TEAMS, DIVISIONS, getWeekMatchups } from "@/lib/teams"
+import { DIVISIONS, getWeekMatchups } from "@/lib/teams"
+import { getRoster } from "@/lib/roster"
 import { SEASON_WEEKS, simulateWeeklyDrive, DEMO_DAYS } from "@/lib/demo"
 import { fetchMultiWeekScores, getWeekDates } from "@/lib/live-scoring"
 
 export const dynamic = "force-dynamic"
 
 export async function GET(req: NextRequest) {
-  const conference = req.nextUrl.searchParams.get("conference") ?? "AFC"
+  const conference = req.nextUrl.searchParams.get("conference") ?? "Conf"
   const throughWeek = Math.min(
     SEASON_WEEKS.length,
     Math.max(0, parseInt(req.nextUrl.searchParams.get("throughWeek") ?? "0", 10))
   )
 
-  // Fetch all past week scores in one Snowflake query
+  // Fetch all past week scores in one query
   const allScores = throughWeek > 0 ? await fetchMultiWeekScores(throughWeek) : new Map()
+  const TEAMS = await getRoster()
 
   const result: Record<string, Array<{
     week: number

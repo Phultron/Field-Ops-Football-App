@@ -1,6 +1,7 @@
 // GET /api/team?id=98843&throughWeek=5
 import { NextRequest } from "next/server"
-import { TEAMS, getWeekMatchups } from "@/lib/teams"
+import { getWeekMatchups } from "@/lib/teams"
+import { getRoster } from "@/lib/roster"
 import { simulateWeeklyDrive, DEMO_DAYS, SEASON_WEEKS } from "@/lib/demo"
 import { fetchWeekScores } from "@/lib/live-scoring"
 
@@ -13,10 +14,11 @@ export async function GET(req: NextRequest) {
     Math.max(1, parseInt(req.nextUrl.searchParams.get("throughWeek") ?? String(SEASON_WEEKS.length), 10))
   )
 
-  const team = TEAMS.find(t => t.employee_id === id)
+  const roster = await getRoster()
+  const team = roster.find(t => t.employee_id === id)
   if (!team) return Response.json({ error: "Team not found" }, { status: 404 })
 
-  const divTeams = TEAMS
+  const divTeams = roster
     .filter(t => t.division === team.division)
     .sort((a, b) => a.seed - b.seed)
 

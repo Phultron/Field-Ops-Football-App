@@ -26,3 +26,7 @@ coverage/
 
 # Snowflake CLI local bundle output
 output/
+
+# Local-only sync script — references real roster data from a sibling private
+# repo. Never committed; lives only on your machine.
+scripts/sync-gridiron-to-airtable.ts
