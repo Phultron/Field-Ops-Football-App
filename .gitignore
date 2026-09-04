@@ -9,6 +9,10 @@ out/
 .env
 .env*.local
 
+# Local-only credentials for the scheduled Airtable sync (Snowflake PAT +
+# Airtable PAT). Never committed; lives only on your machine.
+.env.sync
+
 # Snowflake CLI / SDK logs
 snowflake.log
 *.log

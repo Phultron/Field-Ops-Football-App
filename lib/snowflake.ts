@@ -415,6 +415,12 @@ function getPasswordPool(): ReturnType<typeof snowflake.createPool> {
         ...baseConfig(),
         username: process.env.SNOWFLAKE_USER,
         password: process.env.SNOWFLAKE_PASSWORD,
+        // Set SNOWFLAKE_AUTHENTICATOR=PROGRAMMATIC_ACCESS_TOKEN to auth with a PAT
+        // (passed via SNOWFLAKE_PASSWORD) instead of a real account password —
+        // enables non-interactive scripts/scheduled jobs without OAuth browser login.
+        ...(process.env.SNOWFLAKE_AUTHENTICATOR && {
+          authenticator: process.env.SNOWFLAKE_AUTHENTICATOR,
+        }),
       },
       POOL_CONFIG,
     )
