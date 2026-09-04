@@ -79,14 +79,14 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
-              <span className="text-[10px] text-gray-500 hidden sm:block">Week</span>
+              <span className="text-[10px] text-gray-500 hidden sm:block">Round</span>
               <select
                 value={week}
                 onChange={e => setWeek(Number(e.target.value))}
                 className="bg-gray-900 border border-gray-700 rounded px-2 py-1 text-sm text-gray-200 focus:outline-none"
               >
                 {SEASON_WEEKS.map((_, i) => (
-                  <option key={i + 1} value={i + 1}>Week {i + 1}</option>
+                  <option key={i + 1} value={i + 1}>Round {i + 1}</option>
                 ))}
               </select>
             </div>
