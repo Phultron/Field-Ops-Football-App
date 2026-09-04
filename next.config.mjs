@@ -1,4 +1,7 @@
-// `output: "standalone"` is required for Docker/SPCS deployment.
+// `output: "standalone"` is required for Docker/SPCS deployment, but it is
+// incompatible with Vercel's own build system (Vercel does its own serverless
+// bundling and expects Next's default output format). Vercel sets VERCEL=1
+// during builds, so skip `standalone` only there.
 // `images.unoptimized` avoids needing the sharp package.
 //
 // `turbopack.root` and `outputFileTracingRoot` are pinned to this app's
@@ -17,7 +20,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  ...(process.env.VERCEL ? {} : { output: 'standalone' }),
   outputFileTracingRoot: __dirname,
   turbopack: {
     root: __dirname,
