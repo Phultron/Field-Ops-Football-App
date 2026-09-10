@@ -75,7 +75,7 @@ export default function Home() {
               </svg>
               <div className="min-w-0">
                 <div className="text-sm sm:text-base font-bold text-white leading-tight truncate">Field Ops Fantasy Football</div>
-                <div className="text-[9px] sm:text-[10px] text-gray-500 leading-tight hidden xs:block">2026 Season · Field Service Team Competition</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 leading-tight hidden xs:block">2026 Season · DTH Competition</div>
               </div>
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
@@ -96,7 +96,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-3 sm:px-4 pt-4">
           {/* Page title */}
           <h1 className="text-xl sm:text-2xl font-black text-white mb-1">Field Ops Fantasy Football</h1>
-          <p className="text-xs sm:text-sm text-gray-500 mb-4">2026 Season · Field Service Team Competition</p>
+          <p className="text-xs sm:text-sm text-gray-500 mb-4">2026 Season · DTH Competition</p>
 
           {/* Main tabs */}
           <div className="flex gap-0.5 border-b border-gray-800 mb-4 overflow-x-auto">

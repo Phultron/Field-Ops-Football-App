@@ -1,17 +1,20 @@
 // Demo scoring engine — deterministic synthetic scores via MD5-hash
 import { createHash } from "crypto"
+import { COMPETITION_START } from "./config"
 
 export const MAX_SCORE = 100
 export const DEMO_DAYS = 4 // days simulated per game
 
-// Season calendar: 9 regular-season weeks starting Sep 8 2026
+// Season calendar: 9 regular-season weeks, aligned to COMPETITION_START so the
+// displayed round label/date-range always matches the dates actually queried
+// by lib/live-scoring.ts's getWeekDates().
 export const SEASON_WEEKS: { label: string; start: Date; end: Date }[] = Array.from(
   { length: 9 },
   (_, i) => {
-    const start = new Date("2026-09-08")
-    start.setDate(start.getDate() + i * 7)
+    const start = new Date(COMPETITION_START + "T00:00:00Z")
+    start.setUTCDate(start.getUTCDate() + i * 7)
     const end = new Date(start)
-    end.setDate(end.getDate() + 4)
+    end.setUTCDate(end.getUTCDate() + 3) // 4-day round: start + 3 days
     return {
       label: `Round ${i + 1}`,
       start,
