@@ -84,45 +84,45 @@ export interface Team {
 
 export const TEAMS: Team[] = [
   // Division A (seeds 1–8)
-  { employee_id: "1001", manager_name: "Manager 1",  district: "Region A1", state: "State 1",  division: "Conf A", conference: "Conf", seed: 1, tech_count: 17, mascot: "River Hawks" },
-  { employee_id: "1002", manager_name: "Manager 2",  district: "Region A2", state: "State 2",  division: "Conf A", conference: "Conf", seed: 2, tech_count: 16, mascot: "Iron Ridge" },
-  { employee_id: "1003", manager_name: "Manager 3",  district: "Region A3", state: "State 3",  division: "Conf A", conference: "Conf", seed: 3, tech_count: 15, mascot: "Island Thunder" },
-  { employee_id: "1004", manager_name: "Manager 4",  district: "Region A4", state: "State 3",  division: "Conf A", conference: "Conf", seed: 4, tech_count: 14, mascot: "Brooklyn Steel" },
-  { employee_id: "1005", manager_name: "Manager 5",  district: "Region A5", state: "State 3",  division: "Conf A", conference: "Conf", seed: 5, tech_count: 14, mascot: "Brownstone Surge" },
-  { employee_id: "1006", manager_name: "Manager 6",  district: "Region A6", state: "State 3",  division: "Conf A", conference: "Conf", seed: 6, tech_count: 11, mascot: "Genesee Rampage" },
-  { employee_id: "1007", manager_name: "Manager 7",  district: "Region A7", state: "State 4",  division: "Conf A", conference: "Conf", seed: 7, tech_count: 17, mascot: "Piedmont Thunder" },
-  { employee_id: "1008", manager_name: "Manager 8",  district: "Region A8", state: "State 4",  division: "Conf A", conference: "Conf", seed: 8, tech_count: 17, mascot: "Cape Fear Tide" },
+  { employee_id: "1001", manager_name: "Manager 1",  district: "Region A1", state: "State 1",  division: "AFC East", conference: "AFC", seed: 1, tech_count: 17, mascot: "River Hawks" },
+  { employee_id: "1002", manager_name: "Manager 2",  district: "Region A2", state: "State 2",  division: "AFC East", conference: "AFC", seed: 2, tech_count: 16, mascot: "Iron Ridge" },
+  { employee_id: "1003", manager_name: "Manager 3",  district: "Region A3", state: "State 3",  division: "AFC East", conference: "AFC", seed: 3, tech_count: 15, mascot: "Island Thunder" },
+  { employee_id: "1004", manager_name: "Manager 4",  district: "Region A4", state: "State 3",  division: "AFC East", conference: "AFC", seed: 4, tech_count: 14, mascot: "Brooklyn Steel" },
+  { employee_id: "1005", manager_name: "Manager 5",  district: "Region A5", state: "State 3",  division: "AFC East", conference: "AFC", seed: 5, tech_count: 14, mascot: "Brownstone Surge" },
+  { employee_id: "1006", manager_name: "Manager 6",  district: "Region A6", state: "State 3",  division: "AFC East", conference: "AFC", seed: 6, tech_count: 11, mascot: "Genesee Rampage" },
+  { employee_id: "1007", manager_name: "Manager 7",  district: "Region A7", state: "State 4",  division: "AFC East", conference: "AFC", seed: 7, tech_count: 17, mascot: "Piedmont Thunder" },
+  { employee_id: "1008", manager_name: "Manager 8",  district: "Region A8", state: "State 4",  division: "AFC East", conference: "AFC", seed: 8, tech_count: 17, mascot: "Cape Fear Tide" },
   // Division B (seeds 1–8)
-  { employee_id: "1009", manager_name: "Manager 9",  district: "Region B1", state: "State 5",  division: "Conf B", conference: "Conf", seed: 1, tech_count: 15, mascot: "Lake Erie Wolves" },
-  { employee_id: "1010", manager_name: "Manager 10", district: "Region B2", state: "State 6",  division: "Conf B", conference: "Conf", seed: 2, tech_count: 14, mascot: "Chesapeake Storm" },
-  { employee_id: "1011", manager_name: "Manager 11", district: "Region B3", state: "State 7",  division: "Conf B", conference: "Conf", seed: 3, tech_count: 14, mascot: "Liberty Steele" },
-  { employee_id: "1012", manager_name: "Manager 12", district: "Region B4", state: "State 6",  division: "Conf B", conference: "Conf", seed: 4, tech_count: 13, mascot: "Tidal Force" },
-  { employee_id: "1013", manager_name: "Manager 13", district: "Region B5", state: "State 7",  division: "Conf B", conference: "Conf", seed: 5, tech_count: 11, mascot: "Iron City Force" },
-  { employee_id: "1014", manager_name: "Manager 14", district: "Region B6", state: "State 5",  division: "Conf B", conference: "Conf", seed: 6, tech_count: 11, mascot: "North Shore Crush" },
-  { employee_id: "1015", manager_name: "Manager 15", district: "Region B7", state: "State 8",  division: "Conf B", conference: "Conf", seed: 7, tech_count: 17, mascot: "Windy City Blitz" },
-  { employee_id: "1016", manager_name: "Manager 16", district: "Region B8", state: "State 9",  division: "Conf B", conference: "Conf", seed: 8, tech_count: 14, mascot: "Lakefront Thunder" },
+  { employee_id: "1009", manager_name: "Manager 9",  district: "Region B1", state: "State 5",  division: "AFC North", conference: "AFC", seed: 1, tech_count: 15, mascot: "Lake Erie Wolves" },
+  { employee_id: "1010", manager_name: "Manager 10", district: "Region B2", state: "State 6",  division: "AFC North", conference: "AFC", seed: 2, tech_count: 14, mascot: "Chesapeake Storm" },
+  { employee_id: "1011", manager_name: "Manager 11", district: "Region B3", state: "State 7",  division: "AFC North", conference: "AFC", seed: 3, tech_count: 14, mascot: "Liberty Steele" },
+  { employee_id: "1012", manager_name: "Manager 12", district: "Region B4", state: "State 6",  division: "AFC North", conference: "AFC", seed: 4, tech_count: 13, mascot: "Tidal Force" },
+  { employee_id: "1013", manager_name: "Manager 13", district: "Region B5", state: "State 7",  division: "AFC North", conference: "AFC", seed: 5, tech_count: 11, mascot: "Iron City Force" },
+  { employee_id: "1014", manager_name: "Manager 14", district: "Region B6", state: "State 5",  division: "AFC North", conference: "AFC", seed: 6, tech_count: 11, mascot: "North Shore Crush" },
+  { employee_id: "1015", manager_name: "Manager 15", district: "Region B7", state: "State 8",  division: "AFC North", conference: "AFC", seed: 7, tech_count: 17, mascot: "Windy City Blitz" },
+  { employee_id: "1016", manager_name: "Manager 16", district: "Region B8", state: "State 9",  division: "AFC North", conference: "AFC", seed: 8, tech_count: 14, mascot: "Lakefront Thunder" },
   // Division C (seeds 1–8)
-  { employee_id: "1017", manager_name: "Manager 17", district: "Region C1", state: "State 10", division: "Conf C", conference: "Conf", seed: 1, tech_count: 29, mascot: "Roughnecks" },
-  { employee_id: "1018", manager_name: "Manager 18", district: "Region C2", state: "State 11", division: "Conf C", conference: "Conf", seed: 2, tech_count: 29, mascot: "Raiders" },
-  { employee_id: "1019", manager_name: "Manager 19", district: "Region C3", state: "State 11", division: "Conf C", conference: "Conf", seed: 3, tech_count: 20, mascot: "Outlaws" },
-  { employee_id: "1020", manager_name: "Manager 20", district: "Region C4", state: "State 11", division: "Conf C", conference: "Conf", seed: 4, tech_count: 18, mascot: "Piney Woods Surge" },
-  { employee_id: "1021", manager_name: "Manager 21", district: "Region C5", state: "State 11", division: "Conf C", conference: "Conf", seed: 5, tech_count: 18, mascot: "Stampede" },
-  { employee_id: "1022", manager_name: "Manager 22", district: "Region C6", state: "State 11", division: "Conf C", conference: "Conf", seed: 6, tech_count: 18, mascot: "Charge" },
-  { employee_id: "1023", manager_name: "Manager 23", district: "Region C7", state: "State 12", division: "Conf C", conference: "Conf", seed: 7, tech_count: 23, mascot: "Bayou Wolves" },
-  { employee_id: "1024", manager_name: "Manager 24", district: "Region C8", state: "State 13", division: "Conf C", conference: "Conf", seed: 8, tech_count: 20, mascot: "Sunshine Surge" },
+  { employee_id: "1017", manager_name: "Manager 17", district: "Region C1", state: "State 10", division: "AFC South", conference: "AFC", seed: 1, tech_count: 29, mascot: "Roughnecks" },
+  { employee_id: "1018", manager_name: "Manager 18", district: "Region C2", state: "State 11", division: "AFC South", conference: "AFC", seed: 2, tech_count: 29, mascot: "Raiders" },
+  { employee_id: "1019", manager_name: "Manager 19", district: "Region C3", state: "State 11", division: "AFC South", conference: "AFC", seed: 3, tech_count: 20, mascot: "Outlaws" },
+  { employee_id: "1020", manager_name: "Manager 20", district: "Region C4", state: "State 11", division: "AFC South", conference: "AFC", seed: 4, tech_count: 18, mascot: "Piney Woods Surge" },
+  { employee_id: "1021", manager_name: "Manager 21", district: "Region C5", state: "State 11", division: "AFC South", conference: "AFC", seed: 5, tech_count: 18, mascot: "Stampede" },
+  { employee_id: "1022", manager_name: "Manager 22", district: "Region C6", state: "State 11", division: "AFC South", conference: "AFC", seed: 6, tech_count: 18, mascot: "Charge" },
+  { employee_id: "1023", manager_name: "Manager 23", district: "Region C7", state: "State 12", division: "AFC South", conference: "AFC", seed: 7, tech_count: 23, mascot: "Bayou Wolves" },
+  { employee_id: "1024", manager_name: "Manager 24", district: "Region C8", state: "State 13", division: "AFC South", conference: "AFC", seed: 8, tech_count: 20, mascot: "Sunshine Surge" },
   // Division D (seeds 1–8)
-  { employee_id: "1025", manager_name: "Manager 25", district: "Region D1", state: "State 14", division: "Conf D", conference: "Conf", seed: 1, tech_count: 22, mascot: "Gateway Wolves" },
-  { employee_id: "1026", manager_name: "Manager 26", district: "Region D2", state: "State 15", division: "Conf D", conference: "Conf", seed: 2, tech_count: 18, mascot: "Pikes Peak Eagles" },
-  { employee_id: "1027", manager_name: "Manager 27", district: "Region D3", state: "State 15", division: "Conf D", conference: "Conf", seed: 3, tech_count: 15, mascot: "Mile High Blitz" },
-  { employee_id: "1028", manager_name: "Manager 28", district: "Region D4", state: "State 16", division: "Conf D", conference: "Conf", seed: 4, tech_count: 14, mascot: "Desert Storm" },
-  { employee_id: "1029", manager_name: "Manager 29", district: "Region D5", state: "State 16", division: "Conf D", conference: "Conf", seed: 5, tech_count: 11, mascot: "Phoenix Inferno" },
-  { employee_id: "1030", manager_name: "Manager 30", district: "Region D6", state: "State 17", division: "Conf D", conference: "Conf", seed: 6, tech_count:  8, mascot: "Wasatch Warriors" },
-  { employee_id: "1031", manager_name: "Manager 31", district: "Region D7", state: "State 18", division: "Conf D", conference: "Conf", seed: 7, tech_count: 27, mascot: "Valley Heat" },
-  { employee_id: "1032", manager_name: "Manager 32", district: "Region D8", state: "State 18", division: "Conf D", conference: "Conf", seed: 8, tech_count: 23, mascot: "High Desert Surge" },
+  { employee_id: "1025", manager_name: "Manager 25", district: "Region D1", state: "State 14", division: "AFC West", conference: "AFC", seed: 1, tech_count: 22, mascot: "Gateway Wolves" },
+  { employee_id: "1026", manager_name: "Manager 26", district: "Region D2", state: "State 15", division: "AFC West", conference: "AFC", seed: 2, tech_count: 18, mascot: "Pikes Peak Eagles" },
+  { employee_id: "1027", manager_name: "Manager 27", district: "Region D3", state: "State 15", division: "AFC West", conference: "AFC", seed: 3, tech_count: 15, mascot: "Mile High Blitz" },
+  { employee_id: "1028", manager_name: "Manager 28", district: "Region D4", state: "State 16", division: "AFC West", conference: "AFC", seed: 4, tech_count: 14, mascot: "Desert Storm" },
+  { employee_id: "1029", manager_name: "Manager 29", district: "Region D5", state: "State 16", division: "AFC West", conference: "AFC", seed: 5, tech_count: 11, mascot: "Phoenix Inferno" },
+  { employee_id: "1030", manager_name: "Manager 30", district: "Region D6", state: "State 17", division: "AFC West", conference: "AFC", seed: 6, tech_count:  8, mascot: "Wasatch Warriors" },
+  { employee_id: "1031", manager_name: "Manager 31", district: "Region D7", state: "State 18", division: "AFC West", conference: "AFC", seed: 7, tech_count: 27, mascot: "Valley Heat" },
+  { employee_id: "1032", manager_name: "Manager 32", district: "Region D8", state: "State 18", division: "AFC West", conference: "AFC", seed: 8, tech_count: 23, mascot: "High Desert Surge" },
 ]
 
-export const DIVISIONS = ["A", "B", "C", "D"] as const
-export const CONFERENCES = ["Conf"] as const
+export const DIVISIONS = ["East", "North", "South", "West"] as const
+export const CONFERENCES = ["AFC"] as const
 
 export function getTeamsByDivision(conference: string, division: string): Team[] {
   const divKey = `${conference} ${division}`
